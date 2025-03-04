@@ -45,7 +45,7 @@ if my_target_match:
     tamper_directory = os.path.join(current_directory, "tamper")
     output_directory = os.path.join(current_directory, "output")
 
-    entries = os.listdir(tamper_directory)
+    entries = [entry for entry in os.listdir(tamper_directory) if entry.endswith(".py") and entry != "__init__.py"]
 
     for entry in entries:
         os.system(f"{command} --output-dir={output_directory} --tamper {os.path.join(tamper_directory, entry)}")
